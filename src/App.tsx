@@ -1,26 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './assets/styles/global.css'
+import Landing from './pages/Landing' // Busca pelo arquivo index automaticamente
+import Routes from './pages/routes';
 
+// Componente app: O componente é a função que retorna um html
+// O componente deve começar com letra maiúscula
+// A biblioteca react sempre precisa ser importada
+// JSX - Javascript + xml - Html dentro do javascript
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Routes />
+    );
 }
 
 export default App;
