@@ -1,6 +1,6 @@
 import React from 'react';
 import './assets/styles/global.css'
-import Landing from './pages/Landing' // Busca pelo arquivo index automaticamente
+// import Landing from './pages/Landing' // Busca pelo arquivo index automaticamente
 import Routes from './pages/routes';
 
 // Componente app: O componente é a função que retorna um html

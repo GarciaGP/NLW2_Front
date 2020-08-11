@@ -9,6 +9,7 @@ import './styles.css'
 // Definindo as propriedades que o componente pode receber
 interface PageHeaderProps {
     title: string; // Obrigatório
+    description?: string;
     // title?: string; // Não obrigatório
 }
 
@@ -24,7 +25,9 @@ const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => { // FC 
 
             <div className="header-content">
                 <strong>{props.title}</strong>
-                {/*  Passando o parâmetro */}
+                {props.description && <p>{props.description}</p>} {/* Exibe  a descrição se não estiver vazia */}
+
+                
                 {props.children} {/*  Passando conteúdo adicional */}
             </div>
         </header>

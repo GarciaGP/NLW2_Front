@@ -3,33 +3,56 @@ import React from 'react';
 import whatsAppIcon from '../../assets/images/icons/whatsapp.svg'
 
 import './styles.css'
+import api from '../../services/api';
 
-function TeacherItem() {
-    return(
+export interface Teacher {
+    id: number;
+    avatar: string;
+    bio: string;
+    cost: number;
+    name: string;
+    subject: string;
+    whatsapp: string;
+}
+
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({ teacher }) => {
+    function createNewConnection() {
+        api.post('connections', {
+            user_id: teacher.id,
+        })
+    }
+    return (
         <article className="teacher-item">
-        <header>
-            <img src="https://avatars2.githubusercontent.com/u/38352545?s=460&u=601af018e865f6c00ba67c41580ec82a92583a8d&v=4" alt="" />
-            <div>
-                <strong>Gabriel Garcia</strong>
-                <span>React</span>
-            </div>
-        </header>
-        <p>
-            Só faço merda
-            <br /> <br />
-        </p>
-
-        <footer>
+            <header>
+                <img src={teacher.avatar} alt={teacher.name} />
+                <div>
+                    <strong>{teacher.name}</strong>
+                    <span>{teacher.subject}</span>
+                </div>
+            </header>
             <p>
-                Preço/Hora
-            <strong>R$50,00</strong>
+                {teacher.bio}
             </p>
-            <button type="button">
-                <img src={whatsAppIcon} alt="Whatsapp" />
-            Entrar em contato
-            </button>
-        </footer>
-    </article>
+
+            <footer>
+                <p>
+                    Preço/Hora
+                    <strong>R$ {teacher.cost}</strong>
+                </p>
+                <a
+                    target="_blank"
+                    onClick={createNewConnection}
+                    href={`https://wa.me/${teacher.whatsapp}`}>
+                    <img src={whatsAppIcon} alt="Whatsapp" />
+                    Entrar em contato
+                </a>
+            </footer>
+        </article>
+
     );
 }
 
